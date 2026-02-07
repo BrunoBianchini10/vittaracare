@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica em Construção</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Vittara Care</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✦</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C5F5D;
-            --secondary: #87A7A6;
-            --accent: #D4AF37;
-            --light-bg: #F8F6F3;
+            --primary: #1B4B5A;
+            --secondary: #7FA99B;
+            --accent: #C9A568;
+            --rose: #D4A5A5;
+            --cream: #FAF7F2;
             --white: #FFFFFF;
-            --text-dark: #2C3E50;
-            --text-light: #6B7280;
+            --text-dark: #2B3A42;
+            --text-light: #8B8B8B;
         }
 
         * {
@@ -23,466 +25,493 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #F8F6F3 0%, #E8E4DC 100%);
+            font-family: 'Raleway', sans-serif;
+            background: var(--cream);
             color: var(--text-dark);
             overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
-            padding: 2rem 0;
         }
 
-        /* Elegant background pattern */
-        .pattern-overlay {
+        /* Decorative background elements */
+        .bg-decoration {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.03;
-            background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
-            background-size: 40px 40px;
+            top: 0;
+            left: 0;
             z-index: 0;
-            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* Subtle floating ornaments */
-        .ornament {
-            position: fixed;
-            opacity: 0.06;
-            animation: gentleFloat 20s ease-in-out infinite;
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.04;
         }
 
-        .ornament-1 {
+        .circle-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -200px;
+            right: -150px;
+        }
+
+        .circle-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .circle-3 {
             width: 200px;
             height: 200px;
-            top: 10%;
-            left: 5%;
-            border: 1px solid var(--accent);
-            border-radius: 50%;
-            animation-delay: 0s;
+            background: var(--rose);
+            top: 40%;
+            left: 10%;
+            animation: floatSlow 25s ease-in-out infinite;
         }
 
-        .ornament-2 {
-            width: 150px;
-            height: 150px;
-            bottom: 15%;
-            right: 8%;
-            border: 1px solid var(--secondary);
-            border-radius: 50%;
-            animation-delay: 3s;
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
         }
 
-        .ornament-3 {
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            right: 15%;
-            border: 1px solid var(--accent);
-            transform: rotate(45deg);
-            animation-delay: 6s;
-        }
-
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        /* Main container */
-        .container {
+        /* Header section */
+        .header {
             position: relative;
             z-index: 1;
+            padding: 3rem 2rem 2rem;
             text-align: center;
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 2px;
-            box-shadow: 0 20px 60px rgba(44, 95, 93, 0.08);
         }
 
-        /* Hero section with character */
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+        .logo-area {
+            margin-bottom: 1rem;
         }
 
-        .character-wrapper {
-            flex: 0 0 auto;
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-divider {
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1rem auto;
+        }
+
+        /* Main content */
+        .main-content {
             position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        /* Left side - Character */
+        .character-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .character-frame {
+            position: relative;
+            padding: 2rem;
+        }
+
+        .character-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .character-image {
-            width: 280px;
+            width: 100%;
+            max-width: 350px;
             height: auto;
-            filter: drop-shadow(0 10px 30px rgba(44, 95, 93, 0.15));
-            animation: floatCharacter 4s ease-in-out infinite;
-        }
-
-        @keyframes floatCharacter {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .character-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: glowPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-
-        /* Decorative line */
-        .decorative-line {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            margin-bottom: 2rem;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; width: 80px; }
-            50% { opacity: 1; width: 120px; }
-        }
-
-        /* Title */
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            letter-spacing: 0.03em;
-            line-height: 1.2;
-        }
-
-        h1 strong {
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        /* Subtitle */
-        .subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            font-style: italic;
-        }
-
-        /* Welcome message */
-        .welcome-message {
-            background: linear-gradient(135deg, rgba(44, 95, 93, 0.05), rgba(212, 175, 55, 0.05));
-            padding: 2rem;
-            border-left: 3px solid var(--accent);
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .welcome-message p {
-            color: var(--text-dark);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .welcome-message .signature {
-            margin-top: 1rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        /* Divider */
-        .divider {
-            width: 60px;
-            height: 1px;
-            background: var(--accent);
-            margin: 2.5rem auto;
             position: relative;
+            z-index: 2;
+            animation: gentleBounce 5s ease-in-out infinite;
         }
 
-        .divider::before,
-        .divider::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            transform: translateY(-50%);
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        .divider::before {
-            left: -12px;
+        /* Right side - Content */
+        .text-section {
+            padding: 2rem;
         }
 
-        .divider::after {
-            right: -12px;
-        }
-
-        /* Progress section */
-        .progress-section {
-            margin: 3rem 0;
-        }
-
-        .progress-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
+        .section-label {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
             font-weight: 500;
         }
 
-        .progress-container {
-            width: 100%;
-            max-width: 400px;
-            height: 3px;
-            background: rgba(44, 95, 93, 0.1);
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .main-title .highlight {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .main-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Stats section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: var(--white);
+            box-shadow: 0 10px 40px rgba(27, 75, 90, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .stat-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Message box */
+        .message-box {
+            background: linear-gradient(135deg, rgba(127, 169, 155, 0.08), rgba(201, 165, 104, 0.08));
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 900px;
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .message-box::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-style: italic;
+            text-align: right;
+        }
+
+        /* Progress section */
+        .progress-wrapper {
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        .progress-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .progress-track {
+            height: 4px;
+            background: rgba(27, 75, 90, 0.1);
             border-radius: 10px;
-            margin: 1rem auto;
             overflow: hidden;
             position: relative;
         }
 
-        .progress-bar {
+        .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--primary), var(--accent));
-            width: 0%;
-            animation: elegantLoading 3s ease-in-out forwards;
+            width: 0;
+            animation: loadProgress 3s ease-out forwards;
             position: relative;
         }
 
-        @keyframes elegantLoading {
-            0% { width: 0%; }
-            100% { width: 75%; }
+        @keyframes loadProgress {
+            to { width: 78%; }
         }
 
-        .progress-bar::after {
+        .progress-fill::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
             right: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            animation: progressShine 2s infinite;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: shine 2s infinite;
         }
 
-        @keyframes progressShine {
+        @keyframes shine {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
 
-        /* Info text */
-        .info {
-            margin-top: 2rem;
-            font-size: 0.95rem;
+        .progress-label {
+            margin-top: 1rem;
+            font-size: 0.9rem;
             color: var(--text-light);
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Feature badges */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            text-align: center;
-            max-width: 150px;
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .feature-text {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            line-height: 1.4;
+            letter-spacing: 0.1em;
         }
 
         /* Contact section */
-        .contact {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(44, 95, 93, 0.1);
+        .contact-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
         }
 
-        .contact h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
             color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
         }
 
         .contact-subtitle {
             color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 3rem;
         }
 
-        .contact-links {
+        .contact-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
-        .contact-link {
-            color: var(--primary);
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
             text-decoration: none;
-            padding: 1rem 2.5rem;
-            border: 1.5px solid var(--primary);
-            border-radius: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            font-weight: 400;
-            font-size: 0.9rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            background: var(--white);
         }
 
-        .contact-link::before {
+        .contact-btn.primary {
+            background: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .contact-btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .contact-btn.primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .contact-btn.secondary:hover {
             background: var(--primary);
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .contact-link:hover {
             color: var(--white);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(44, 95, 93, 0.2);
         }
 
-        .contact-link:hover::before {
-            left: 0;
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(27, 75, 90, 0.25);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
         }
 
         /* Responsive */
         @media (max-width: 968px) {
-            .hero-section {
-                flex-direction: column;
+            .content-grid {
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .hero-content {
+            .text-section {
                 text-align: center;
             }
 
-            .decorative-line {
-                margin-left: auto;
-                margin-right: auto;
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
-            .character-image {
-                width: 220px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1.5rem;
-                margin: 1rem;
+            .stat-item::after {
+                display: none;
             }
 
-            .contact-links {
+            .message-box {
+                padding: 2rem;
+            }
+
+            .contact-buttons {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .contact-link {
+            .contact-btn {
                 width: 100%;
-                max-width: 280px;
-            }
-
-            .features {
-                gap: 2rem;
-            }
-
-            .ornament {
-                opacity: 0.03;
-            }
-
-            .character-image {
-                width: 200px;
-            }
-
-            .welcome-message {
-                padding: 1.5rem;
+                max-width: 300px;
+                justify-content: center;
             }
         }
 
-        /* Fade in animation */
-        .fade-in {
-            animation: fadeIn 1s ease-out;
+        /* Entrance animations */
+        .fade-up {
+            animation: fadeUp 1s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { 
+        @keyframes fadeUp {
+            from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
-            to { 
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .slide-in-left {
-            animation: slideInLeft 1s ease-out;
+        .fade-in {
+            animation: fadeIn 1.2s ease-out;
         }
 
-        @keyframes slideInLeft {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-left {
+            animation: slideLeft 1s ease-out;
+        }
+
+        @keyframes slideLeft {
             from {
                 opacity: 0;
                 transform: translateX(-50px);
@@ -493,11 +522,11 @@
             }
         }
 
-        .slide-in-right {
-            animation: slideInRight 1s ease-out;
+        .slide-right {
+            animation: slideRight 1s ease-out;
         }
 
-        @keyframes slideInRight {
+        @keyframes slideRight {
             from {
                 opacity: 0;
                 transform: translateX(50px);
@@ -510,103 +539,127 @@
     </style>
 </head>
 <body>
-    <div class="pattern-overlay"></div>
-    <div class="ornament ornament-1"></div>
-    <div class="ornament ornament-2"></div>
-    <div class="ornament ornament-3"></div>
-
-    <div class="container fade-in">
-        <div class="hero-section">
-            <div class="character-wrapper slide-in-left">
-                <div class="character-glow"></div>
-                <img src="personagem.png" alt="Profissional da Clínica" class="character-image">
-            </div>
-
-            <div class="hero-content slide-in-right">
-                <div class="decorative-line"></div>
-                <h1>Em Breve<br><strong>Uma Nova Experiência</strong></h1>
-                <p class="subtitle">Cuidado, excelência e bem-estar em cada detalhe</p>
-            </div>
-        </div>
-
-        <div class="welcome-message fade-in">
-            <p>
-                Seja muito bem-vindo! Estamos preparando um espaço especial para cuidar de você com toda a atenção que merece. Nossa equipe está dedicada a criar um ambiente acolhedor, moderno e equipado com o que há de mais avançado em tecnologia médica.
-            </p>
-            <p class="signature">— Equipe da Clínica</p>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🏥</div>
-                <p class="feature-text">Infraestrutura de excelência</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⚕️</div>
-                <p class="feature-text">Equipe especializada</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💎</div>
-                <p class="feature-text">Atendimento premium</p>
-            </div>
-        </div>
-
-        <div class="progress-section">
-            <p class="progress-label">Preparando sua experiência</p>
-            <div class="progress-container">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-
-        <p class="info">
-            Estamos finalizando os últimos detalhes para oferecer a você<br>
-            um ambiente sofisticado e acolhedor, com tecnologia de ponta<br>
-            e o mais alto padrão de atendimento.
-        </p>
-
-        <div class="contact">
-            <h2>Entre em Contato</h2>
-            <p class="contact-subtitle">Estamos à disposição para atendê-lo</p>
-            <div class="contact-links">
-                <!-- <a href="mailto:contato@clinica.com.br" class="contact-link" target="_blank">E-mail</a> -->
-                <a href="https://wa.me/5521978842005" class="contact-link" target="_blank">WhatsApp</a>
-                <a href="https://www.instagram.com/draluciana_muniz" class="contact-link" target="_blank">Instagram</a>
-            </div>
-        </div>
+    <div class="bg-decoration">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
     </div>
 
+    <header class="header fade-in">
+        <div class="logo-area">
+            <h1 class="logo-text">CLÍNICA DE EXCELÊNCIA</h1>
+            <div class="logo-divider"></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-grid">
+            <div class="character-section slide-left">
+                <div class="character-frame">
+                    <img src="personagem.png" alt="Dra. Luciana Muniz" class="character-image">
+                </div>
+            </div>
+
+            <div class="text-section slide-right">
+                <p class="section-label">Aguarde</p>
+                <h2 class="main-title">
+                    Preparando algo<br>
+                    <span class="highlight">extraordinário</span><br>
+                    para você
+                </h2>
+                <p class="main-subtitle">
+                    Um novo conceito em saúde e bem-estar está a caminho. 
+                    Estamos cuidando de cada detalhe para proporcionar 
+                    uma experiência única e transformadora.
+                </p>
+            </div>
+        </div>
+
+        <div class="stats-grid fade-up">
+            <div class="stat-item">
+                <span class="stat-icon">🏥</span>
+                <h3 class="stat-title">Tecnologia Avançada</h3>
+                <p class="stat-description">Equipamentos de última geração para seu cuidado</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">⚕️</span>
+                <h3 class="stat-title">Equipe Renomada</h3>
+                <p class="stat-description">Profissionais altamente especializados</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">💎</span>
+                <h3 class="stat-title">Excelência Premium</h3>
+                <p class="stat-description">Atendimento personalizado e exclusivo</p>
+            </div>
+        </div>
+
+        <div class="message-box fade-up">
+            <p class="message-text">
+                Nosso compromisso é com a sua saúde e bem-estar. Estamos criando um espaço onde 
+                cada paciente recebe atenção individualizada, em um ambiente acolhedor e sofisticado, 
+                com toda a tecnologia necessária para oferecer os melhores resultados.
+            </p>
+            <p class="message-author">— Dra. Luciana Muniz</p>
+        </div>
+
+        <div class="progress-wrapper fade-up">
+            <h3 class="progress-title">Nossa Jornada</h3>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="progress-label">FINALIZANDO OS ÚLTIMOS DETALHES</p>
+        </div>
+    </main>
+
+    <section class="contact-section">
+        <h2 class="contact-title">Fale Conosco</h2>
+        <p class="contact-subtitle">Estamos prontos para atendê-lo</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/5521978842005" class="contact-btn primary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="contact-icon">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                WhatsApp
+            </a>
+            <a href="https://www.instagram.com/draluciana_muniz" class="contact-btn secondary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="contact-icon">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Instagram
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Clínica de Excelência. Todos os direitos reservados.</p>
+    </footer>
+
     <script>
-        // Add subtle particle effect on mouse move for elegance
-        let particleTimeout;
-        document.addEventListener('mousemove', (e) => {
-            clearTimeout(particleTimeout);
-            particleTimeout = setTimeout(() => {
-                if (Math.random() > 0.97) {
-                    const particle = document.createElement('div');
-                    particle.style.position = 'fixed';
-                    particle.style.width = '3px';
-                    particle.style.height = '3px';
-                    particle.style.borderRadius = '50%';
-                    particle.style.backgroundColor = 'var(--accent)';
-                    particle.style.left = e.clientX + 'px';
-                    particle.style.top = e.clientY + 'px';
-                    particle.style.pointerEvents = 'none';
-                    particle.style.opacity = '0.4';
-                    particle.style.transition = 'all 1.5s ease';
-                    document.body.appendChild(particle);
-                    
-                    setTimeout(() => {
-                        particle.style.transform = 'translateY(30px) scale(0)';
-                        particle.style.opacity = '0';
-                    }, 10);
-                    
-                    setTimeout(() => {
-                        particle.remove();
-                    }, 1500);
+        // Smooth entrance animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-            }, 50);
+            });
+        }, observerOptions);
+
+        // Subtle parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const circles = document.querySelectorAll('.bg-circle');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            circles.forEach((circle, index) => {
+                const speed = (index + 1) * 10;
+                circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
         });
     </script>
 </body>
